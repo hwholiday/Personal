@@ -1,6 +1,7 @@
 package com.howie.personal.utils
 
 import android.content.Context
+import android.content.res.Resources
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import com.howie.personal.App
@@ -48,5 +49,22 @@ class Utils {
         val info = getNetWorkInfo()
         return (info != null && info.isConnected && info.type == ConnectivityManager.TYPE_MOBILE)
     }
+
+    /**
+     * 获取屏幕的宽度
+     */
+    fun getScreenWidth(): Int {
+        val re = Resources.getSystem().displayMetrics
+        return re.widthPixels
+    }
+
+    /**
+     * 获取屏幕的高度
+     */
+    fun getScreenHeight(): Int {
+        val re = Resources.getSystem().displayMetrics
+        return re.heightPixels
+    }
+
 
 }
