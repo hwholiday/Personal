@@ -5,7 +5,7 @@ package com.howie.personal.net
  */
 object ApiConfig {
 
-    val BASE_URL = "123123"
+    val BASE_URL = "http://ip.taobao.com/service/"
 
     val LOGIN_URL = ""
 

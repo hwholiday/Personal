@@ -1,6 +1,7 @@
 package com.howie.personal.net
 
-import okhttp3.Call
+import okhttp3.ResponseBody
+import retrofit2.Call
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -10,7 +11,7 @@ import kotlin.collections.ArrayList
 class ApiAgency {
     var api = ApiInit.init()
 
-    private var mCallList = Collections.synchronizedList(ArrayList<Call>())
+    private var mCallList = Collections.synchronizedList(ArrayList<Call<ResponseBody>>())
 
     companion object {
         fun getInstance() = Holder.instance
@@ -20,7 +21,14 @@ class ApiAgency {
         val instance = ApiAgency()
     }
 
-    fun cancelAll(vararg call: Call) {
+    fun GetIp(): Call<ResponseBody> {
+        val call: Call<ResponseBody> = api.GetIp()
+        mCallList.add(call)
+        return call
+    }
+
+
+    fun cancelAll(vararg call: Call<ResponseBody>) {
         if (call.size > 0) {
             mCallList.removeAll(Arrays.asList(*call))
         }
